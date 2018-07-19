@@ -1,0 +1,10 @@
+html, body {
+      font-family: sans-serif;
+      width: 100%;
+      background-color: white;
+      color: black;
+    }
+#map {
+      height: 750px;
+      width: 100%;
+    }

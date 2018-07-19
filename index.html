@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset='utf-8' />
+		<title>Vector-Tile Viewer</title>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+		<link rel="stylesheet" href="main.css">
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+	</head>
+		<body>
+            <center><a href="http://www.hack4.no/"><img width="400" height="128" src="hack4no-logo.png" /></a></center>
+			<center><H1> Mapbox Vector tile example </H1></center>
+		<div id="map"></div>
+		<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFha2EiLCJhIjoiY2lzZnp4eWhvMDAzejJwbnExNmY5ODdsMCJ9.EeEx5fDH-zH3pdvuHMuncg';
+var map = new mapboxgl.Map({
+    style: 'style.json',
+    center: [10.735, 59.914],
+    zoom: 15.44,
+    pitch: 60,
+    bearing: 59.20,
+    container: 'map'
+});
+
+// The 'building' layer in the mapbox-streets vector source contains building-height
+// data from OpenStreetMap.
+map.on('load', function() {
+    // Insert the layer beneath any symbol layer.
+    var layers = map.getStyle().layers;
+
+    var labelLayerId;
+    for (var i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+            labelLayerId = layers[i].id;
+            break;
+        }
+    }
+
+    map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+            'fill-extrusion-color': '#d4de21',
+
+            // use an 'interpolate' expression to add a smooth transition effect to the
+            // buildings as the user zooms in
+            'fill-extrusion-height': [
+                "interpolate", ["linear"], ["zoom"],
+                15, 0,
+                15.05, ["get", "height"]
+            ],
+            'fill-extrusion-base': [
+                "interpolate", ["linear"], ["zoom"],
+                15, 0,
+                15.05, ["get", "min_height"]
+            ],
+            'fill-extrusion-opacity': .8
+        }
+    }, labelLayerId);
+});
+</script>
+		<H2>Sources:</H2>
+        <p> Data from <a href="https://www.openstreetmap.org">OpenStreetMap</a>.</p>
+        <p> Styling uses <a href="http://www.hack4.no/">Hack4NO</a> colours.</p>
+        <p> Styling, 3D buildings and front end powered by <a href="https://www.mapbox.com/">mapbox</a>.</p>
+        <p> Page hosted with <a href="https://pages.github.com/">github pages</a>.</p>
+        <p> Thanks <a href="https://github.com/NieneB/foss4gNL_vector_tiles">Niene</a> for teaching me!</p>
+	</body>
+</html>
