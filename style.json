@@ -13,12 +13,12 @@
         "mapbox:trackposition": false
     },
     "center": [
-        10.738806554338453,
-        59.915039503104595
+        10.734177,
+        59.915042
     ],
-    "zoom": 15.260867922896225,
-    "bearing": 0,
-    "pitch": 0,
+    "zoom": 15.26,
+    "bearing": 59.20,
+    "pitch": 60,
     "sources": {
         "composite": {
             "url": "mapbox://mapbox.mapbox-streets-v7",
