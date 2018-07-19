@@ -5,20 +5,20 @@ html, body {
       color: black;
     }
 #map {
-      height: 500px;
+      height: 750px;
       width: 100%;
     }
     .map-overlay {
             position: absolute;
             bottom: 0;
-            right: 0;
+            left: 20px;
             background: rgba(255, 255, 255, 0.8);
-            margin-right: 20px;
             font-family: sans-serif;
             overflow: auto;
             border-radius: 3px;
         }
     #features {
+    		padding: 10px;
             top: 0;
             height: 100px;
             margin-top: 250px;
