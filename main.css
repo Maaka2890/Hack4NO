@@ -5,6 +5,23 @@ html, body {
       color: black;
     }
 #map {
-      height: 750px;
+      height: 500px;
       width: 100%;
     }
+    .map-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            margin-right: 20px;
+            font-family: sans-serif;
+            overflow: auto;
+            border-radius: 3px;
+        }
+    #features {
+            top: 0;
+            height: 100px;
+            margin-top: 250px;
+            width: 250px;
+            text-align:center;
+        }
