@@ -23,11 +23,6 @@
         "composite": {
             "url": "mapbox://mapbox.mapbox-streets-v7",
             "type": "vector"
-        },
-        "mapbox://mapbox.terrain-rgb": {
-            "url": "mapbox://mapbox.terrain-rgb",
-            "type": "raster-dem",
-            "tileSize": 256
         }
     },
     "sprite": "mapbox://sprites/maaka/cjjsbfukv2a7o2ro0eucvdoaw",
@@ -1191,17 +1186,6 @@
                     1.5
                 ]
             }
-        },
-        {
-            "id": "mapbox-terrain-rgb",
-            "type": "hillshade",
-            "metadata": {},
-            "source": "mapbox://mapbox.terrain-rgb",
-            "minzoom": 11,
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {}
         },
         {
             "id": "road-label",
